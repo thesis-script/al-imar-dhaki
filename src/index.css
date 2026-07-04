@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0F4C81;
+  --color-secondary: #2E8B57;
+  --color-accent: #F4A300;
+  --color-lightgray: #F5F5F5;
+  --color-darkgray: #333333;
+  --font-display: "Cairo", "Tajawal", sans-serif;
+}
+
+html, body {
+  font-family: "Tajawal", "Cairo", sans-serif;
+  background-color: #F5F5F5;
+  color: #333333;
+}
+
+* { scroll-behavior: smooth; }
+
+.glass {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.card-shadow {
+  box-shadow: 0 8px 30px rgba(15, 76, 129, 0.08);
+}
+
+.btn-primary {
+  background-color: #0F4C81;
+  color: white;
+  transition: all 0.25s ease;
+}
+.btn-primary:hover { background-color: #0c3c68; transform: translateY(-2px); }
+
+.btn-accent {
+  background-color: #F4A300;
+  color: white;
+  transition: all 0.25s ease;
+}
+.btn-accent:hover { background-color: #d98e00; transform: translateY(-2px); }
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-thumb { background: #0F4C81; border-radius: 8px; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeUp { animation: fadeUp 0.6s ease forwards; }
+
+/* Arabic RTL support */
+[dir="rtl"] .lg\:ml-64 { margin-left: 0; margin-right: 16rem; }
+[dir="rtl"] .left-0 { left: auto; right: 0; }
+[dir="rtl"] .left-3 { left: auto; right: 0.75rem; }
+[dir="rtl"] .pl-10 { padding-left: 1rem; padding-right: 2.5rem; }
+[dir="rtl"] .pl-4  { padding-left: 1rem; padding-right: 1rem; }
+
+.font-arabic {
+  font-family: "Tajawal", "Cairo", sans-serif;
+  direction: rtl;
+}
+
+/* ===== Full RTL support ===== */
+[dir="rtl"] {
+  text-align: right;
+}
+[dir="rtl"] .lg\:ml-64 {
+  margin-left: 0 !important;
+  margin-right: 16rem !important;
+}
+[dir="rtl"] aside.lg\:flex {
+  left: auto !important;
+  right: 0 !important;
+}
+[dir="rtl"] .left-3 {
+  left: auto !important;
+  right: 0.75rem !important;
+}
+[dir="rtl"] .pl-10 {
+  padding-left: 1rem !important;
+  padding-right: 2.5rem !important;
+}
+
+/* ===== Auth page animations ===== */
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes floatUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-ring {
+  0%   { transform: scale(1);   opacity: .6; }
+  50%  { transform: scale(1.08); opacity: .3; }
+  100% { transform: scale(1);   opacity: .6; }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.animate-slideInLeft  { animation: slideInLeft  0.7s cubic-bezier(.22,.68,0,1.2) forwards; }
+.animate-slideInRight { animation: slideInRight 0.7s cubic-bezier(.22,.68,0,1.2) forwards; }
+.animate-floatUp      { animation: floatUp      0.6s ease forwards; }
+.animate-pulse-ring   { animation: pulse-ring   2s ease-in-out infinite; }
+
+/* Input focus ring */
+.auth-input:focus {
+  outline: none;
+  border-color: #0F4C81;
+  box-shadow: 0 0 0 3px rgba(15,76,129,0.15);
+}
+.auth-input { transition: border-color .2s, box-shadow .2s; }
+
+/* Loading spinner */
+.spinner {
+  width: 18px; height: 18px;
+  border: 2px solid rgba(255,255,255,.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease-out both;
+}
+
+@keyframes pop {
+  0% { transform: scale(0.85); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.animate-pop {
+  animation: pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes pingSlow {
+  0% { transform: scale(0.9); opacity: 0.6; }
+  80%, 100% { transform: scale(1.6); opacity: 0; }
+}
+.animate-ping-slow {
+  animation: pingSlow 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes progressFill {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+.animate-progressFill {
+  animation: progressFill 2s linear forwards;
+}
